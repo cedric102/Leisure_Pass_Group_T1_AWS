@@ -1,0 +1,9 @@
+create table trends (
+    date varchar(25) ,
+    Elon_Musk varchar(3) ,
+    Joe_Biden varchar(3) ,
+    Taylor_Swift varchar(3) ,
+    Godzilla varchar(3) ,
+    Black_Panther varchar(3) ,
+    isPartial varchar(5)
+);
