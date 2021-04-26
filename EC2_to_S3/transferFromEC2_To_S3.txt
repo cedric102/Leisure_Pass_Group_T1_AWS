@@ -1,0 +1,1 @@
+aws s3 cp ~/resulting_trends_for_one_hour.csv s3://buck-s3/ --recursive --endpoint arn:aws:s3:eu-west-2:xxxxxxxxxxxx:accesspoint/accesspoint
