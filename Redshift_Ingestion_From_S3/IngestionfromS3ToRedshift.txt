@@ -1,0 +1,4 @@
+copy trends
+from 's3://buck-s3/resulting_trends_for_one_hour.csv' 
+access_key_id 'your-access-key-id'
+secret_access_key your-secret-access-key;
