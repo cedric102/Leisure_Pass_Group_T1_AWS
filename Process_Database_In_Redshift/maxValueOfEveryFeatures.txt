@@ -1,0 +1,29 @@
+SELECT *
+FROM AWS WHERE (Elon_Musk) IN 
+( SELECT Elon_Musk
+  FROM AWS
+  ORDER BY Elon_Musk DESC LIMIT 1 )
+UNION
+SELECT *
+FROM AWS WHERE (Joe_Biden) IN 
+( SELECT Joe_Biden
+  FROM AWS
+  ORDER BY Joe_Biden DESC LIMIT 1 )
+UNION
+SELECT *
+FROM AWS WHERE (Taylor_Swift) IN 
+( SELECT Taylor_Swift
+  FROM AWS
+  ORDER BY Taylor_Swift DESC LIMIT 1 )
+UNION
+SELECT *
+FROM AWS WHERE (Godzilla) IN 
+( SELECT Godzilla
+  FROM AWS
+  ORDER BY Godzilla DESC LIMIT 1 )
+UNION
+SELECT *
+FROM AWS WHERE (Black_Panther) IN 
+( SELECT Black_Panther
+  FROM AWS
+  ORDER BY Black_Panther DESC LIMIT 1 );
