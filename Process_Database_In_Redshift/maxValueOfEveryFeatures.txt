@@ -1,29 +1,29 @@
 SELECT *
-FROM AWS WHERE (Elon_Musk) IN 
+FROM trends WHERE (Elon_Musk) IN 
 ( SELECT Elon_Musk
-  FROM AWS
+  FROM trends
   ORDER BY Elon_Musk DESC LIMIT 1 )
 UNION
 SELECT *
-FROM AWS WHERE (Joe_Biden) IN 
+FROM trends WHERE (Joe_Biden) IN 
 ( SELECT Joe_Biden
-  FROM AWS
+  FROM trends
   ORDER BY Joe_Biden DESC LIMIT 1 )
 UNION
 SELECT *
-FROM AWS WHERE (Taylor_Swift) IN 
+FROM trends WHERE (Taylor_Swift) IN 
 ( SELECT Taylor_Swift
-  FROM AWS
+  FROM trends
   ORDER BY Taylor_Swift DESC LIMIT 1 )
 UNION
 SELECT *
-FROM AWS WHERE (Godzilla) IN 
+FROM trends WHERE (Godzilla) IN 
 ( SELECT Godzilla
-  FROM AWS
+  FROM trends
   ORDER BY Godzilla DESC LIMIT 1 )
 UNION
 SELECT *
 FROM AWS WHERE (Black_Panther) IN 
 ( SELECT Black_Panther
-  FROM AWS
+  FROM trendsUpdate tge 
   ORDER BY Black_Panther DESC LIMIT 1 );
