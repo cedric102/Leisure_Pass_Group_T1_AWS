@@ -1,0 +1,34 @@
+Write a SQL query to find employees who earn the top three salaries in each of the department. For the
+above tables, your SQL query should return the following rows (order of rows does not matter).
+
+See the following in which the result is broken down. Please, use the Query 4) to get the expected result.
+
+// Query 1) Join the two tables by employee DepartmentId and department Id
+    SELECT d.Name as DEPARTMENT, e.Name as EMPLOYEE, e.Salary
+    FROM Employee as e
+    JOIN Department as d
+    ON e.DepartmentId = d.Id;
+
+// Query 2) Join the two tables by employee DepartmentId and department Id ordered by Salary.
+    SELECT d.Name as DEPARTMENT, e.Name as EMPLOYEE, e.Salary
+    FROM Employee as e
+    JOIN Department as d
+    ON e.DepartmentId = d.Id
+    ORDER BY e.Salary DESC;
+
+// Query 3) Sort by Salary Rank in each DepartmentId. The Instructions indicates that the order does not matter, but it is still required here in order for the DENSE_RANK to work as expected
+    SELECT d.Name as DEPARTMENT, e.Name as EMPLOYEE, e.Salary, DENSE_RANK() OVER(PARTITION BY d.Name ORDER BY e.Salary DESC ) as RNK
+    FROM Employee as e
+    JOIN Department as d
+    ON e.DepartmentId = d.Id
+
+
+// Query 4) Select only the top 3 Salary in each DepartmentId
+SELECT DEPARTMENT, EMPLOYEE, SALARY
+FROM (
+    SELECT d.Name as DEPARTMENT, e.Name as EMPLOYEE, e.Salary, DENSE_RANK() OVER(PARTITION BY d.Name ORDER BY e.Salary DESC ) as RNK
+    FROM Employee as e
+    JOIN Department as d
+    ON e.DepartmentId = d.Id
+) t
+WHERE RNK <= 3;

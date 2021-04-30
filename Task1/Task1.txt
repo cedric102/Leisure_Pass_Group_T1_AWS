@@ -1,0 +1,51 @@
+
+Write a SQL query to find the cancellation rate of requests made by unbanned users (both client and driver
+must be unbanned) between Oct 1, 2013 and Oct 3, 2013. The cancellation rate is computed by dividing
+the number of cancelled (by client or driver) requests made by unbanned users by the total number of
+requests made by unbanned users.
+
+See the following in which the result is broken down. Please, use the Query 3) to get the expected result.
+
+// Query 1) Take the Rate of completion for each day without condition
+select Request_at as Day ,  round(sum(Status <> 'completed')/count(Id),2) as `Cancellation Rate` 
+from Trips
+group by Day;
++------------+-------------------+
+| Day        | Cancellation Rate |
++------------+-------------------+
+| 2013-10-01 |              0.50 |
+| 2013-10-02 |              0.00 |
+| 2013-10-03 |              0.33 |
++------------+-------------------+
+
+// Query 2) Take the Rate of completion for each day. Just checking the Client_Id not being banned is enough to get the expected result. But, to make it more global , see the next Query
+select Request_at as Day ,  round(sum(Status <> 'completed')/count(Id),2) as `Cancellation Rate` 
+from Trips 
+where Client_Id in (select Users_Id from Users where Banned = 'No')
+group by Day;
++------------+-------------------+
+| Day        | Cancellation Rate |
++------------+-------------------+
+| 2013-10-01 |              0.33 |
+| 2013-10-02 |              0.00 |
+| 2013-10-03 |              0.50 |
++------------+-------------------+
+
+
+// Query 3) Take the Rate of completion for each day. Ensures that only the Client_Id not being banned are taken into account. Also, take only the entries where Request_at is between '2013-10-01' and '2013-10-03'
+select Request_at as Day, round(sum(Status <> 'completed')/count(Id),2) as `Cancellation Rate`
+from Trips
+where Client_Id in (select Users_Id from Users where Banned = 'No')
+      and Driver_Id in (select Users_Id from Users where Banned = 'No')
+      and Request_at between '2013-10-01' and '2013-10-03'
+group by Day
+order by Day;
+
++------------+-------------------+
+| Day        | Cancellation Rate |
++------------+-------------------+
+| 2013-10-01 |              0.33 |
+| 2013-10-02 |              0.00 |
+| 2013-10-03 |              0.50 |
++------------+-------------------+
+
