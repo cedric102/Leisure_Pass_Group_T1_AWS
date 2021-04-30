@@ -4,4 +4,4 @@ Joe_Biden , MAX(Joe_Biden) OVER() as MAX_JOE , FLOOR( AVG(Joe_Biden) OVER() *100
 Elon_Musk , MAX(Taylor_Swift) OVER() as MAX_Taylor , FLOOR( AVG(Taylor_Swift) OVER()*100)/100 as AVG_Taylor ,
 Elon_Musk , MAX(Godzilla) OVER() as MAX_Godzilla , FLOOR( AVG(Godzilla) OVER()*100)/100 as AVG_Godzilla,
 Elon_Musk , MAX(Black_Panther) OVER() as MAX_PANTHER  , FLOOR( AVG(Black_Panther) OVER()*100)/100 as AVG_PANTHER 
-from AWS;
+from trends;
