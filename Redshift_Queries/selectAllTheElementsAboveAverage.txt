@@ -1,1 +1,1 @@
-select * from AWS WHERE Elon_Musk > (SELECT AVG(Elon_Musk) FROM AWS)
+select * from trends WHERE Elon_Musk > (SELECT AVG(Elon_Musk) FROM trends)
